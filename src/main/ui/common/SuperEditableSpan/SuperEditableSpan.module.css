@@ -1,0 +1,8 @@
+.editableSpan {
+  display: inline-block;
+  font-size: 110%;
+  font-style: oblique;
+  color: steelblue;
+  cursor: text;
+  margin: 20px;
+}

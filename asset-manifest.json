@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/.github.io/cards-project/static/css/main.073c9b0a.css",
-    "main.js": "/.github.io/cards-project/static/js/main.d7dc0330.js",
-    "static/js/787.d2ce132a.chunk.js": "/.github.io/cards-project/static/js/787.d2ce132a.chunk.js",
-    "static/media/logo.svg": "/.github.io/cards-project/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/.github.io/cards-project/index.html",
-    "main.073c9b0a.css.map": "/.github.io/cards-project/static/css/main.073c9b0a.css.map",
-    "main.d7dc0330.js.map": "/.github.io/cards-project/static/js/main.d7dc0330.js.map",
-    "787.d2ce132a.chunk.js.map": "/.github.io/cards-project/static/js/787.d2ce132a.chunk.js.map"
+    "main.css": "/cards-project/static/css/main.091d2f32.css",
+    "main.js": "/cards-project/static/js/main.8495fb4c.js",
+    "static/js/787.d2ce132a.chunk.js": "/cards-project/static/js/787.d2ce132a.chunk.js",
+    "index.html": "/cards-project/index.html",
+    "main.091d2f32.css.map": "/cards-project/static/css/main.091d2f32.css.map",
+    "main.8495fb4c.js.map": "/cards-project/static/js/main.8495fb4c.js.map",
+    "787.d2ce132a.chunk.js.map": "/cards-project/static/js/787.d2ce132a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.d7dc0330.js"
+    "static/css/main.091d2f32.css",
+    "static/js/main.8495fb4c.js"
   ]
 }

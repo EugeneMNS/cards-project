@@ -1,6 +1,6 @@
 .mainblock{
 display: flex;
-    /*background: linear-gradient(rgba(230, 212, 222, 1), rgba(152, 144, 199, 1));*/
+    background: linear-gradient(rgba(230, 212, 222, 1), rgba(152, 144, 199, 1));
 }
 .loginbox {
     margin: 50px auto;

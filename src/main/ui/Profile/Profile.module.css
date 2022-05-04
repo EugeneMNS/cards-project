@@ -1,0 +1,73 @@
+.range {
+    padding-left: 40px;
+}
+
+.container {
+    width: 85%;
+    min-height: 87vh;
+    /*height: auto;*/
+    /*margin: 1% auto;*/
+    margin: 11vh auto 2%;
+    display: flex;
+    border-radius: 10px;
+}
+
+.profile__info {
+    width: 20%;
+    min-width: 225px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ecf8f7;
+    font-family: 'SFUIDisplayRegular';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #2D2E46;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.profile__infoPage {
+    background-color: #C2E4E7;
+    height: 250px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+.profile__main {
+    padding: 2% 5%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.profile__textName {
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    line-height: 27px;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+.profile__textName:hover {
+    transform: scale(1.1);
+}
+.profile__ChooseOwner {
+    margin-top: 33px;
+}
+.profile__photo_wrapper{
+
+}
+.profile__photo {
+    border-radius: 50%;
+    height: 150px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+

@@ -1,0 +1,39 @@
+.search {
+  padding: 15px 0;
+  min-width: 74%;
+  //min-width: 70%;
+  //max-width: 100%;
+  //min-width: 461px;
+  width: 100%;
+}
+
+.searchInput{
+  //min-width: 461px;
+  width: 100%;
+  height: 36px;
+  background: #ecf6f8;
+  opacity: 0.5;
+  border: 1px solid #092A61;
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 6px 20px 6px 40px;
+  position: relative;
+
+}
+.searchInput:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0;
+}
+.searchInput::before{
+  content: url("https://toppng.com/uploads/preview/search-icon-customer-icon-11564158924ifw7wyjtfu.png");
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  z-index: 99999999999999999;
+}

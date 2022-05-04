@@ -29,7 +29,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
 
             <div className={s.profile__textName}>
                 <TextField variant={'standard'}
-                           value={'Title'}
+                           value={'User name'}
                            />
 
             </div>

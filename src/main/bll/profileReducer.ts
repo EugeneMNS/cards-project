@@ -5,14 +5,7 @@ import {AnyAction} from 'redux';
 import {setAppLoading, setErrorAC, setInitializedAC} from '../bll/appReducer';
 import {authApi} from '../dal/authApi';
 import {UserDomainType} from '../dal/api';
-//import {logOut, redirectToLogin} from '../login/login-reducer';
-// import {
-//     setCardPacksPageCountAC,
-//     setCardsPacksCountFromRangeAC,
-//     setSortPacksValueAC,
-//     setWithMyIdAC
-// } from '../packs/packs-reducer';
-//import {changeLayoutAC, setCardsPageCountAC} from '../cards/cards-reducer';
+
 
 
 //types
@@ -86,14 +79,8 @@ export const changeUserName = (name: string): ThunkAction<void, RootStateType, u
                     tokenDeathTime: 0,
                     __v: 0
                 }));
-                //dispatch(setCardPacksPageCountAC(10))
-                //dispatch(setCardsPageCountAC(10))
-                //dispatch(setCardsPacksCountFromRangeAC([0, 1000]))
-                //dispatch(redirectToLogin(true))
 
-               // dispatch(setWithMyIdAC(true))
-               // dispatch(changeLayoutAC("profile"))
-                //dispatch(setSortPacksValueAC(""))
+
             }
         })
         .finally(() => dispatch(setAppLoading("idle")))

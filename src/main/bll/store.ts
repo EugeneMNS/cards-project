@@ -7,7 +7,7 @@ import { resetPasswordReducer } from "./resetPasswordReducer";
 import { createNewPasswordReducer } from "./createNewPasswordReducer";
 import { error404Reducer } from "./error404Reducer";
 
-export type RootStateType = ReturnType<typeof rootReducer>;
+
 
 const rootReducer = combineReducers({
     login: loginReducer,
@@ -18,3 +18,4 @@ const rootReducer = combineReducers({
     error404: error404Reducer,
 });
 export const store = createStore(rootReducer, applyMiddleware(thunk));
+export type RootStateType = ReturnType<typeof rootReducer>;

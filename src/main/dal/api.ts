@@ -28,7 +28,7 @@ export type UserDomainType = {
 type UpdateMeType = {
     updatedUser: {};
     token: string;
-    tokenDeathTime: number; // под вопросом посмотреть в респонсе
+    tokenDeathTime: number;
     error?: string;
 };
 
@@ -37,12 +37,4 @@ export type updateMeDataType = {
     avatar: string;
 };
 
-// api
-export const api = {
 
-    // updateMe(payload: updateMeDataType) {
-    //     return instance.put<updateMeType>('auth/me', {payload});
-    // },
-    //
-
-};

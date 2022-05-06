@@ -52,7 +52,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
 
             <div className={s.profile__textName}>
                 <TextField variant={'standard'}
-                           value={title}
+                           value={title ? title : 'User Name'}
                            onBlur={onBlur}
                            autoFocus
                            onKeyPress={onEnterPressHandler}

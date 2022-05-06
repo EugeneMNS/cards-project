@@ -3,17 +3,21 @@ import s from './Login.module.css'
 import classes from "../Header/Header.module.css";
 import {Path} from "../Routes/Routes";
 import {NavLink} from "react-router-dom";
-import {log} from "util";
+import {useDispatch} from "react-redux";
+import {loginReducer, LoginTC, setIsLoggedInAC} from "../../bll/loginReducer";
+import {LoginParamsType} from "../../bll/api/auth-api";
 
 export const Login = () => {
 
     let getActiveStyle = ({isActive}: { isActive: boolean }) => isActive ? classes.active : ''
 
 
-    let [email,setEmail] = useState("")
-    let [password,setPassword] = useState("")
+    const [email,setEmail] = useState<string>("")
+    const [password,setPassword] = useState<string>("")
+    const [remember, setRemember] = useState<boolean>(false);
+    const dispatch = useDispatch();
 
-   const handleSubmit=  (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit=  (event: React.FormEvent<HTMLFormElement>) => {
        event.preventDefault();
    }
 const chengEmailHandler = (e:ChangeEvent<HTMLInputElement>)=>{
@@ -22,11 +26,14 @@ const chengEmailHandler = (e:ChangeEvent<HTMLInputElement>)=>{
     const chengPasswordHandler = (e:ChangeEvent<HTMLInputElement>)=> {
         setPassword(e.currentTarget.value)
     }
+    const onCheck =(e:ChangeEvent<HTMLInputElement>) => {
+        setRemember(e.currentTarget.checked)
+    }
   const onClickLoginHandler = () =>{
-      console.log({
-           email,
-          password
-      })
+
+
+        // dispatch(LoginTC(setIsLoggedInAC(email,password,remember)))
+      console.log(dispatch(setIsLoggedInAC(email,password,remember)))
   }
     return (
         <div className={s.mainblock}>
@@ -53,6 +60,12 @@ const chengEmailHandler = (e:ChangeEvent<HTMLInputElement>)=>{
 
 
                     />
+                    <div>
+                        <label>
+                            <input type={"checkbox"}  checked={remember} onChange={onCheck}/>
+                            remember me
+                        </label>
+                    </div>
                     <span className={s.forgText} >Forgot Password?</span>
                     <button className={s.loginbox_log}
                             onClick={onClickLoginHandler}

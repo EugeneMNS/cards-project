@@ -2,7 +2,7 @@ import React from "react";
 import {  Route, Routes } from "react-router-dom";
 import { Error404 } from "../Error404/Error404";
 import { Registration } from "../Registration/Registration";
-import { Profile } from "../Profile/Profile";
+import { ProfilePage } from "../Profile/ProfilePage";
 import { ResetPassword } from "../ResetPassword/ResetPassword";
 import { CreateNewPassword } from "../CreateNewPassword/CreateNewPassword";
 import { SuperComponents } from "../SuperConponents/SuperComponents"
@@ -25,7 +25,7 @@ export const RoutesConst = () => {
                 <Route path="/" element={<div>Empty page</div>} />
                 <Route path={Path.Login} element={<Login />} />
                 <Route path={Path.Registration} element={<Registration />} />
-                <Route path={Path.Profile} element={<Profile />} />
+                <Route path={Path.Profile} element={<ProfilePage />} />
                 <Route path={Path.ResetPassword} element={<ResetPassword />} />
                 <Route
                     path={Path.CreateNewPassword}

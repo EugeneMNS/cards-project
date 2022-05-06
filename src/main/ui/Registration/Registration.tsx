@@ -1,11 +1,18 @@
 import React, {ChangeEvent, useState} from "react";
 import {Button, FormGroup, Grid, IconButton, InputAdornment, TextField} from "@mui/material";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Navigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {RootStateType} from "../../bll/store";
+import {registerTC} from "../../bll/registrationReducer";
 
 export const Registration = () => {
 
     const navigate = useNavigate();
+
+    const dispatch = useDispatch();
+    const isRegisterIn = useSelector<RootStateType, boolean>((state) => state.registration.isRegisterIn);
+    const error = useSelector<RootStateType, string | null>(state => state.registration.error);
 
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -41,7 +48,13 @@ export const Registration = () => {
     }
 
     const onClickRegisterHandler = () => {
+        // @ts-ignore
+        dispatch(registerTC(email, password))
         console.log({email, password, confirmPassword})
+    }
+
+    if (isRegisterIn) {
+        return <Navigate to={"/login"}/>
     }
 
     return <>
@@ -109,6 +122,7 @@ export const Registration = () => {
                                 >Register</Button>
                             </div>
                         </div>
+                        <div style={{color: "red", marginTop: "10px", height: "15px"}}>{error}</div>
                     </FormGroup>
                 </form>
             </Grid>

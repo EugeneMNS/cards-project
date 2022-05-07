@@ -1,50 +1,134 @@
-import {authAPI, } from "./api/auth-api";
-import {Dispatch} from "redux";
+import {setAppLoading, setErrorAC, SetErrorActionType, setInitializedAC} from '../bll/appReducer';
+import {authApi, LoginDataType} from '../dal/authApi';
+import {Dispatch} from 'redux';
+// import {
+//     setCardPacksPageCountAC,
+//     setCardsPacksCountFromRangeAC,
+//     setSortPacksValueAC,
+//     setWithMyIdAC
+// } from '../packs/packs-reducer';
+// import {changeLayoutAC, setCardsPageCountAC} from '../cards/cards-reducer';
+import {setUserProfile, SetUserProfileType} from './profileReducer';
 
 
-// type InitialStateType = typeof initState;
-
-const initState = {
-    isLogitIn: false,
-    error: null
+export type LoginState = {
+    error: string
+    redirectToLogin: boolean
 };
 
-export type InitialStateType = {
-    // true если регистрация прошла успешно
-    isLogitIn: boolean
-    // если ошибка какая-то глобальная произойдет - мы запишем текст ошибки сюда
-    error: string | null
-}
+export const loginInitialState: LoginState = {
+    error: '',
+    redirectToLogin: false,
+};
 
-export const loginReducer = (state :InitialStateType = initState, action: ActionsType): InitialStateType => {
+export const loginReducer = (
+    state: LoginState = loginInitialState,
+    action: LoginActions
+) => {
     switch (action.type) {
-        case "login/SET-IS-LOGGED-IN":
-            return  {...state, isLogitIn: action.value}
-        case 'login/SET-ERROR':
-            return {...state, error: action.error}
-        default:
+        case 'LOGIN/ERROR': {
+            return {...state, error: action.error};
+        }
+        case 'LOGIN/REDIRECT-TO-LOGIN': {
+            return {...state, redirectToLogin: action.value};
+        }
+        default: {
             return state;
+        }
     }
 };
 
-export const setIsLoggedInAC = (value: boolean) =>
-    ({type: 'login/SET-IS-LOGGED-IN', value} as const)
+export const loginError = (error: string) => ({type: 'LOGIN/ERROR', error} as const);
+export const redirectToLogin = (value: boolean) => ({type: 'LOGIN/REDIRECT-TO-LOGIN', value} as const);
 
-export const setLoginErrorAC = (error: string | null) =>
-    ({type: 'login/SET-ERROR', error} as const)
 
-type ActionsType = ReturnType<typeof setIsLoggedInAC> | ReturnType<typeof setLoginErrorAC>
+export type LoginActions =
+    | SetUserProfileType
+    | ReturnType<typeof loginError>
+    | ReturnType<typeof redirectToLogin>
+    | SetErrorActionType
 
-export const LoginTC = (email: string | null, password: string | null,rememberMe:boolean) => (dispatch: Dispatch<ActionsType>) => {
-    authAPI.login(email, password, rememberMe).then((res) =>{
-dispatch(setIsLoggedInAC(true))
+
+export const signIn = (payload: LoginDataType) => (dispatch: Dispatch) => {
+    dispatch(setAppLoading("loading"))
+    authApi
+        .login(payload)
+        .then((res) => {
+            // dispatch(loginSuccess());
+            dispatch(setUserProfile(res.data));
+            dispatch(setInitializedAC(true))
+            dispatch(loginError(''));
+            dispatch(setErrorAC(null))
         })
-        .catch((error) => {
-            if (!error.response.data.isEmailValid) {
-                dispatch(setLoginErrorAC("Error: " + error.response.data.error))
-            } else {
-                dispatch(setLoginErrorAC("Error: " + error.response.data.passwordRegExp))
-            }
+        .catch((err) => {
+            const error = err.response
+                ? err.response.data.error
+                : err.message + ', more details in the console';
+            console.log('Error: ', {...err});
+            dispatch(loginError(error));
+            // dispatch(setErrorAC(error))
         })
+        .finally(() => dispatch(setAppLoading("succeeded")))
+};
+
+
+export const checkAuthMe = () => (dispatch: Dispatch) => {
+    dispatch(setAppLoading("loading"))
+    authApi.me()
+        .then((res) => {
+            // dispatch(setAppLoading(false))
+            dispatch(setInitializedAC(true));
+            dispatch(setUserProfile(res.data))
+            dispatch(redirectToLogin(false))
+            dispatch(setErrorAC(null))
+        })
+        .catch((err) => {
+            console.log(err.response.data.error)
+            dispatch(redirectToLogin(true))
+        })
+        .finally(() => dispatch(setAppLoading("idle")))
 }
+
+
+export const logOut = () => (dispatch: Dispatch) => {
+    dispatch(setAppLoading("loading"))
+    authApi
+        .logOut()
+        .then((res) => {
+            dispatch(setInitializedAC(false))
+            dispatch(setUserProfile({
+                _id: '',
+                email: '',
+                name: '',
+                avatar: '',
+                publicCardPacksCount: 0,
+                created: '',
+                updated: '',
+                isAdmin: false,
+                verified: false,
+                rememberMe: false,
+                error: '',
+                token: '',
+                tokenDeathTime: 0,
+                __v: 0
+            }));
+            /*dispatch(setCardPacksPageCountAC(10))
+            dispatch(setCardsPageCountAC(10))
+            dispatch(setCardsPacksCountFromRangeAC([0, 1000]))*/
+            dispatch(redirectToLogin(true))
+
+           /* dispatch(setWithMyIdAC(true))
+            dispatch(changeLayoutAC("profile"))
+            dispatch(setSortPacksValueAC(""))*/
+        })
+        .catch((err) => {
+            const error = err.response
+                ? err.response.data.error
+                : err.message + ', more details in the console';
+            console.log('Error: ', {...err});
+            dispatch(loginError(error));
+            dispatch(setErrorAC(error))
+        })
+        .finally(() => dispatch(setAppLoading("idle")))
+};
 

@@ -1,0 +1,29 @@
+
+.CheckBoxWrapper {
+  display: flex;
+  align-items: baseline;
+
+  .CheckBoxLabel {
+    font-family: 'SFUIDisplayRegular', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: rgb(0, 0, 2);
+  }
+}
+
+.linkTransparent {
+  width: 139px;
+  height: 40px;
+  font-family: "SFUIDisplay-Regular";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #2D2E46;
+  opacity: 0.5;
+  outline: none;
+  text-decoration: none;
+  background-color: inherit;
+  margin-left: 210px;
+  cursor: pointer;
+}

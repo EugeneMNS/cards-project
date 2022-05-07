@@ -1,91 +1,97 @@
-import React, {ChangeEvent, FormEventHandler, useEffect, useRef, useState} from "react";
-import s from './Login.module.css'
-import classes from "../Header/Header.module.css";
-import {Path} from "../Routes/Routes";
-import {Navigate, NavLink, useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {loginReducer, LoginTC, setIsLoggedInAC} from "../../bll/loginReducer";
+import React, {FormEvent, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {NavLink} from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
+import {RootStateType} from '../../bll/store';
+import {Register} from "../Routes/Routes"
+import s from './LogIn.module.scss';
+import style from '../InitCommonStyle.module.css';
+import {Alert} from '@mui/material';
+//import {ErrorSnackbar} from '../../common/Error/ErrorSnackbar';
+import {signIn} from '../../bll/loginReducer';
 
-import {RootStateType} from "../../bll/store";
+const Login = React.memo(() => {
+    const [email, setEmail] = useState('test1test@test.com');
+    const [password, setPassword] = useState('freetest');
+    const [rememberMe, setRememberMe] = useState(false);
 
-export const Login = () => {
-
-    let getActiveStyle = ({isActive}: { isActive: boolean }) => isActive ? classes.active : ''
-    const isLogitIn = useSelector<RootStateType, boolean>((state) => state.login.isLogitIn);
-    const error = useSelector<RootStateType, string | null>(state => state.login.error);
-
-
-    const [email,setEmail] = useState<string>("")
-    const [password,setPassword] = useState<string>("")
-    const [remember, setRemember] = useState<boolean>(false);
+    const isInitialized = useSelector<RootStateType, boolean>((state) => state.app.isInitialized);
+    const error = useSelector<RootStateType, string>((state) => state.login.error);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        dispatch(signIn({email, password, rememberMe})as any);
+    };
 
-const chengEmailHandler = (e:ChangeEvent<HTMLInputElement>)=>{
-    setEmail(e.currentTarget.value)
-}
-    const chengPasswordHandler = (e:ChangeEvent<HTMLInputElement>)=> {
-        setPassword(e.currentTarget.value)
+    if (isInitialized) {
+        return <Navigate to={'/profile'}/>
     }
-    const onCheck =(e:ChangeEvent<HTMLInputElement>) => {
-        setRemember(e.currentTarget.checked)
-    }
-    const handleSubmit=  (event: React.FormEvent<HTMLFormElement>) => {
-
-        event.preventDefault();
-        // @ts-ignore
-        dispatch(LoginTC(email,password,remember))
-    }
-
-    if (isLogitIn) {
-        return <Navigate to={"/profile"}/>
-    }
-    // if (!isLogitIn) {
-    //     return <Navigate to={"/profile"}/>
-    // }
 
     return (
-        <div className={s.mainblock}>
-            <div className={s.loginbox}>
-                <h1>it-incubator</h1>
-                <h3>Sign in</h3>
-                <form className={s.loginbox_form} onSubmit={handleSubmit}>
-                    <input className={s.input}
-
-                           type="text"
-                           placeholder="Email"
-                           // onChange={(e)=>setEmail(e.target.value)}
-                           onChange={chengEmailHandler}
-                           value={email}
+        <div className={style.initCmpnentWrapper}>
+            <h2 className={style.title}>Playing cards</h2>
+            <h3 className={style.subtitle}>Sign In</h3>
+            <form onSubmit={handleSubmit}>
 
 
-                    />
-                    <input className={s.input}
+                <div className={style.formBox}>
 
-                           type='password'
-                           placeholder="Password"
-                           onChange={chengPasswordHandler}
-                           value={password}
+                    <label className={style.loginLabel}>Email
+                        <input
+                            className={style.Input}
+                            value={email}
+                            type="email"
+                            name="email"
+                            onChange={(e) => setEmail(e.currentTarget.value)}
+                        />
+                    </label>
 
+                    <label className={style.loginLabel}>Password
+                        <input
+                            className={style.Input}
+                            value={password}
+                            type="password"
+                            name="password"
+                            onChange={(e) => setPassword(e.currentTarget.value)}
+                        />
+                    </label>
 
-                    />
-                    <div>
-                        <label>
-                            <input type={"checkbox"}  checked={remember} onChange={onCheck}/>
-                            remember me
-                        </label>
+                    {error && (
+                        <span>
+            <Alert severity="error">{error}</Alert>
+          </span>
+                    )}
+                    <div className={s.CheckBoxWrapper}>
+                        <div>
+                            <label className={s.CheckBoxLabel}>
+                                <input
+                                    type="checkbox"
+                                    name="rememberMe"
+                                    onChange={(e) => setRememberMe(e.currentTarget.checked)}
+                                />
+                                Remember me
+                            </label>
+                        </div>
                     </div>
-                    <span className={s.forgText} >Forgot Password?</span>
-                    <button className={s.loginbox_log}
-
-                    >Login</button>
-
-                </form>
-                <h6>Don't have account?</h6>
-                <NavLink to={Path.Registration} className={getActiveStyle}>
-                    <button>Sign Up</button>
+                </div>
+                <div>
+                    <NavLink className={s.linkTransparent} to={"#"}>
+                        Forgot password
+                    </NavLink>
+                </div>
+                <div>
+                    <button className={style.btnBlue}>Login</button>
+                </div>
+            </form>
+            <p className={style.textLight}>Don't have an account?</p>
+            <div>
+                <NavLink className={style.linkBlue} to={Register}>
+                    Sign Up
                 </NavLink>
             </div>
+            {/*<ErrorSnackbar/>*/}
         </div>
-    )
-};
+    );
+});
+
+export default Login;

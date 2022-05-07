@@ -1,13 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./Header.module.css";
-import { Path } from "../Routes/Routes";
+import {Path, Register} from "../Routes/Routes";
 import {useSelector} from "react-redux";
 import {RootStateType} from "../../bll/store";
 
 
 
 export const Header = () => {
+    // @ts-ignore
     const isLogitIn = useSelector<RootStateType, boolean>((state) => state.login.isLogitIn);
     let getActiveStyle = ({isActive}:{isActive:boolean})=> isActive ? classes.active: ''
 let logIsLog = ()=>isLogitIn ? "Log out":"Log in"
@@ -22,7 +23,7 @@ let logIsLog = ()=>isLogitIn ? "Log out":"Log in"
 
             </div>
             <div className={classes.item}>
-                <NavLink to={Path.Registration} className={getActiveStyle}>
+                <NavLink to={Register} className={getActiveStyle}>
                     Registration
                 </NavLink>
             </div>
@@ -39,11 +40,6 @@ let logIsLog = ()=>isLogitIn ? "Log out":"Log in"
             <div className={classes.item}>
                 <NavLink to={Path.CreateNewPassword} className={getActiveStyle}>
                     Create new password
-                </NavLink>
-            </div>
-            <div className={classes.item}>
-                <NavLink to={Path.SuperComponents} className={getActiveStyle}>
-                    SuperComponents
                 </NavLink>
             </div>
         </nav>

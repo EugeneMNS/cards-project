@@ -3,7 +3,7 @@ import {instance,  UserDomainType} from './api';
 export type LoginDataType = {
     email: string;
     password: string;
-    rememberMe: boolean;
+    rememberMe?: boolean;
 };
 export type LogOutType = {
     info: string;

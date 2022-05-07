@@ -1,4 +1,4 @@
-import {authAPI} from "../api/api";
+import {authAPI} from "../dal/api_Srg";
 import {Dispatch} from "redux";
 
 const initialState = {

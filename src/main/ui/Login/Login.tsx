@@ -2,24 +2,25 @@ import React, {ChangeEvent, FormEventHandler, useEffect, useRef, useState} from 
 import s from './Login.module.css'
 import classes from "../Header/Header.module.css";
 import {Path} from "../Routes/Routes";
-import {NavLink} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {Navigate, NavLink, useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 import {loginReducer, LoginTC, setIsLoggedInAC} from "../../bll/loginReducer";
-import {LoginParamsType} from "../../bll/api/auth-api";
+
+import {RootStateType} from "../../bll/store";
 
 export const Login = () => {
 
     let getActiveStyle = ({isActive}: { isActive: boolean }) => isActive ? classes.active : ''
+    const isLogitIn = useSelector<RootStateType, boolean>((state) => state.login.isLogitIn);
+    const error = useSelector<RootStateType, string | null>(state => state.login.error);
 
 
     const [email,setEmail] = useState<string>("")
     const [password,setPassword] = useState<string>("")
     const [remember, setRemember] = useState<boolean>(false);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const handleSubmit=  (event: React.FormEvent<HTMLFormElement>) => {
-       event.preventDefault();
-   }
 const chengEmailHandler = (e:ChangeEvent<HTMLInputElement>)=>{
     setEmail(e.currentTarget.value)
 }
@@ -29,12 +30,20 @@ const chengEmailHandler = (e:ChangeEvent<HTMLInputElement>)=>{
     const onCheck =(e:ChangeEvent<HTMLInputElement>) => {
         setRemember(e.currentTarget.checked)
     }
-  const onClickLoginHandler = () =>{
+    const handleSubmit=  (event: React.FormEvent<HTMLFormElement>) => {
 
+        event.preventDefault();
+        // @ts-ignore
+        dispatch(LoginTC(email,password,remember))
+    }
 
-        // dispatch(LoginTC(setIsLoggedInAC(email,password,remember)))
-      console.log(dispatch(setIsLoggedInAC(email,password,remember)))
-  }
+    if (isLogitIn) {
+        return <Navigate to={"/profile"}/>
+    }
+    // if (!isLogitIn) {
+    //     return <Navigate to={"/profile"}/>
+    // }
+
     return (
         <div className={s.mainblock}>
             <div className={s.loginbox}>
@@ -68,7 +77,7 @@ const chengEmailHandler = (e:ChangeEvent<HTMLInputElement>)=>{
                     </div>
                     <span className={s.forgText} >Forgot Password?</span>
                     <button className={s.loginbox_log}
-                            onClick={onClickLoginHandler}
+
                     >Login</button>
 
                 </form>

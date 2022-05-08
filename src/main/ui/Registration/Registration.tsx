@@ -1,10 +1,12 @@
 import React, {ChangeEvent, useState} from "react";
+import s from './Registration.module.css'
 import {Button, FormGroup, Grid, IconButton, InputAdornment, TextField} from "@mui/material";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
-import {useNavigate, Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../bll/store";
 import {registerTC} from "../../bll/registrationReducer";
+import SchoolIcon from '@mui/icons-material/School';
 
 export const Registration = () => {
 
@@ -64,67 +66,62 @@ export const Registration = () => {
             direction="column"
             alignItems="center"
             justifyContent="center"
-            style={{minHeight: '100vh'}}
+            style={{minHeight: '80vh'}}
         >
             <Grid item xs={3}
-                  style={{
-                      backgroundColor: "#e7f3ef",
-                      borderRadius: "10px",
-                      width: "400px",
-                      height: "400px",
-                      padding: "40px"
-                  }}
+                  className={s.registrationContainer}
             >
-                <form onSubmit={onClickRegisterHandler}>
-                    <h1>It-incubator</h1>
-                    <h2>Sign Up</h2>
-                    <FormGroup>
-                        <TextField id="email"
-                                   variant="standard"
-                                   type="email"
-                                   label="Email"
-                                   margin="normal"
-                                   onChange={changeEmailHandler}
-                                   required
-                        />
-                        <TextField id="password"
-                                   variant="standard"
-                                   type={showPassword ? "text" : "password"}
-                                   label="Password"
-                                   margin="normal"
-                                   InputProps={snowHide}
-                                   onChange={changePasswordHandler}
-                                   required
-                        />
-                        <TextField id="confirmPassword"
-                                   variant="standard"
-                                   type={showPassword ? "text" : "password"}
-                                   label="Confirm password"
-                                   margin="normal"
-                                   InputProps={snowHide}
-                                   onChange={changeConfirmPasswordHandler}
-                                   required
-                                   error={confirmPassword !== password}
-                                   helperText={confirmPassword !== password ? "password mismatch" : null}
-                        />
-                        <div style={{alignItems: "center", justifyContent: "center"}}>
-                            <div style={{display: "flex", justifyContent: "space-between"}}>
-                                <Button variant="outlined"
-                                        type="button"
-                                        color="primary"
-                                        style={{width: "150px", borderRadius: "25px", marginTop: "30px"}}
-                                        onClick={() => navigate('/login')}
-                                >Login</Button>
-                                <Button variant="contained"
-                                        type="submit"
-                                        color="primary"
-                                        style={{width: "150px", borderRadius: "25px", marginTop: "30px"}}
-                                >Register</Button>
-                            </div>
-                        </div>
-                        <div style={{color: "red", marginTop: "10px", height: "15px"}}>{error}</div>
-                    </FormGroup>
-                </form>
+                <SchoolIcon style={{width: "70px", height: "70px", color: "cornflowerblue"}}/>
+                <h2>Sign Up</h2>
+                <FormGroup>
+                    <TextField id="email"
+                               variant="standard"
+                               type="email"
+                               label="Email"
+                               margin="normal"
+                               onChange={changeEmailHandler}
+                               required
+                               value={email}
+                    />
+                    <TextField id="password"
+                               variant="standard"
+                               type={showPassword ? "text" : "password"}
+                               label="Password"
+                               margin="normal"
+                               InputProps={snowHide}
+                               onChange={changePasswordHandler}
+                               required
+                               value={password}
+                    />
+                    <TextField id="confirmPassword"
+                               variant="standard"
+                               type={showPassword ? "text" : "password"}
+                               label="Confirm password"
+                               margin="normal"
+                               InputProps={snowHide}
+                               onChange={changeConfirmPasswordHandler}
+                               required
+                               value={confirmPassword}
+                               error={confirmPassword !== password}
+                               helperText={confirmPassword !== password ? "password mismatch" : null}
+                    />
+                    <div style={{display: "flex", justifyContent: "space-around", alignItems: "center"}}>
+                            <Button variant="outlined"
+                                    type="button"
+                                    color="secondary"
+                                    style={{width: "120px", borderRadius: "25px", marginTop: "30px"}}
+                                    onClick={() => navigate('/login')}
+                            >Login</Button>
+                            <Button variant="contained"
+                                    type="submit"
+                                    color="primary"
+                                    style={{width: "120px", borderRadius: "25px", marginTop: "30px"}}
+                                    onClick={onClickRegisterHandler}
+                                    disabled={!email || !password || !confirmPassword}
+                            >Register</Button>
+                    </div>
+                    <div style={{color: "red", marginTop: "10px", height: "25px"}}>{error}</div>
+                </FormGroup>
             </Grid>
         </Grid>
     </>

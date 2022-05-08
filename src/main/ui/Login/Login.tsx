@@ -36,7 +36,7 @@ const Login = React.memo(() => {
 
                 <div className={style.formBox}>
 
-                    <label className={style.loginLabel}>Email
+                    <label className={style.loginLabel}>Email<br/>
                         <input
                             className={style.Input}
                             value={email}

@@ -76,7 +76,7 @@ export const checkAuthMe = () => (dispatch: Dispatch) => {
     dispatch(setAppLoading("loading"))
     authApi.me()
         .then((res) => {
-            // dispatch(setAppLoading(false))
+            //dispatch(setAppLoading(false))
             dispatch(setInitializedAC(true));
             dispatch(setUserProfile(res.data))
             dispatch(redirectToLogin(false))

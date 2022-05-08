@@ -25,7 +25,7 @@ export const RoutesConst = () => {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<div>Empty page</div>} />
+                <Route path="/" element={<ProfilePage/>} />
                 <Route path={Path.Login} element={<Login />} />
                 <Route path={Register} element={<Registration />} />
                 <Route path={Path.Profile} element={<ProfilePage />} />

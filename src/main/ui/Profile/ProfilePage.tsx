@@ -1,12 +1,12 @@
 import React from "react";
 import s from "./Profile.module.css"
-import {Title} from "@mui/icons-material";
 import {ProfileInfo} from "./ProfileInfo";
 import {TableContainer} from "../common/Table/TableContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../bll/store";
 import {InitialProfileStateType} from "../../bll/profileReducer";
 import {Navigate} from 'react-router-dom';
+import {Title} from '../common/Title/Title'
 
 
 export const ProfilePage = () => {
@@ -30,6 +30,7 @@ export const ProfilePage = () => {
       </div>
 
       <div className={s.profile__main}>
+          <Title value={'My packs list'}/>
         <TableContainer/>
 
       </div>

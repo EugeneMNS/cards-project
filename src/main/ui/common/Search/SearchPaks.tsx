@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Search.module.scss'
 
-export const SearchPaks = () => {
+export const SearchPacks = () => {
     return (
         <input className={s.searchInput}
                type="text"

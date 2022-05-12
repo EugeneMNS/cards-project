@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-//import {ChooseOwner} from './ChooseOwner/ChooseOwner';
+import {ChooseOwner} from './ChooseOwner/ChooseOwner';
 import s from '../Profile/Profile.module.css';
 import {getPacksTC} from '../../bll/packsReducer';
 import {useDispatch, useSelector} from 'react-redux';
@@ -54,7 +54,7 @@ export const PacksList = () => {
         <div className={s.container}>
             <div className={s.profile__info}>
                 <div className={s.profile__ChooseOwner}>
-                    {/*<ChooseOwner/>*/}
+                    <ChooseOwner/>
                 </div>
                {/* <RangeSliderContainer/>
                 <Sorting/>*/}

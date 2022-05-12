@@ -1,47 +1,102 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import classes from "./Header.module.css";
-import {Path, Register} from "../Routes/Routes";
-import {useSelector} from "react-redux";
-import {RootStateType} from "../../bll/store";
+import s from './Header.module.css';
+import PackListIcon from './Cards.png'
+//import ProfileIcon from './Profile.png'
+import LogoutIcon from './Logout.png'
+import {NavLink} from 'react-router-dom';
+import {PACKS_LIST_PATH, PROFILE_PATH} from '../Routes/Routes';
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {setCardsPacksCountFromRangeAC, setWithMyIdAC} from '../../bll/packsReducer';
+import {logOut} from '../../bll/loginReducer';
+import {RootStateType} from '../../bll/store';
+import {LinearProgress} from '@mui/material';
+import {RequestStatusType} from '../../bll/appReducer';
 
+export const Header = React.memo(() => {
+    const dispatch = useDispatch()
 
+    const isInitialized = useSelector<RootStateType, boolean>(state => state.app.isInitialized)
+    const layout = useSelector<RootStateType, 'profile' | 'packs-list'>(state => state.cards.layout)
+    const [buttonActive, setButtonActive] = useState<'profile' | 'packs-list' | 'logout'>(layout)
+    const status = useSelector<RootStateType, RequestStatusType>(
+        (state) => state.app.status
+    );
 
-export const Header = () => {
-    // @ts-ignore
-    const isLogitIn = useSelector<RootStateType, boolean>((state) => state.login.isLogitIn);
-    let getActiveStyle = ({isActive}:{isActive:boolean})=> isActive ? classes.active: ''
-let logIsLog = ()=>isLogitIn ? "Log out":"Log in"
+    useEffect(() => {
+        setButtonActive(layout)
+    }, [layout])
 
     return (
-        <nav className={classes.nav}>
-            <div className={classes.item}>
+        <div className={s.mainHeader}>
+            {status === 'loading' && <div className={s.linearProgress}>
+                <LinearProgress color={'info'}/>
+            </div>
+            }
+            <div className={s.wrapper}>
 
-                <NavLink to={Path.Login} className={getActiveStyle}>
-                    {logIsLog}
-                </NavLink>
+
+                <div className={s.title}>
+                    <h1>PLAYING CARDS</h1>
+                </div>
+
+
+                <div className={s.btnWrap}>
+                    {isInitialized && <>
+                        <NavLink to={PACKS_LIST_PATH}>
+                            <button className={
+                                buttonActive === 'packs-list'
+                                    ? `${s.btn} ${s.active}`
+                                    : s.btn
+                            }
+                                    onClick={() => {
+                                        dispatch(setWithMyIdAC(false))
+                                        dispatch(setCardsPacksCountFromRangeAC([0, 1000]))
+                                        // dispatch(changeLayoutAC('packs-list'))
+                                        // dispatch(setSortPacksValueAC(null))
+                                        // setButtonActive('packs-list')
+                                    }}>
+                                <img className={s.btnImg} src={PackListIcon} alt="PacksListIcon"/>
+                                <span>Packs List</span>
+                            </button>
+                        </NavLink>
+                        <NavLink to={PROFILE_PATH}>
+                            <button className={
+                                buttonActive === 'profile'
+                                    ? `${s.btn} ${s.active}`
+                                    : s.btn
+                            }
+                                    onClick={() => {
+                                        dispatch(setWithMyIdAC(true))
+                                        dispatch(setCardsPacksCountFromRangeAC([0, 1000]))
+                                        // dispatch(changeLayoutAC('profile'))
+                                        // dispatch(setSortPacksValueAC(null))
+                                        // setButtonActive('profile')
+                                    }}>
+                                <img className={s.btnImg} src={'ProfileIcon'} alt="ProfileIcon"/>
+                                <span>Profile</span>
+                            </button>
+                        </NavLink>
+                        <button className={
+                            buttonActive === 'logout'
+                                ? `${s.btn} ${s.active}`
+                                : s.btn
+                        }
+                                onClick={() => {
+                                    dispatch(logOut()as any)
+                                }}
+                        >
+                            <img className={`${s.btnImg} ${s.btnLogout}`} src={LogoutIcon} alt="ProfileIcon"/>
+                            <span>Logout</span>
+                        </button>
+                    </>
+                    }
+                </div>
+
 
             </div>
-            <div className={classes.item}>
-                <NavLink to={Register} className={getActiveStyle}>
-                    Registration
-                </NavLink>
-            </div>
-            <div className={classes.item}>
-                <NavLink to={Path.Profile} className={getActiveStyle}>
-                    Profile
-                </NavLink>
-            </div>
-            <div className={classes.item}>
-                <NavLink to={Path.ResetPassword} className={getActiveStyle}>
-                    Reset password
-                </NavLink>
-            </div>
-            <div className={classes.item}>
-                <NavLink to={Path.CreateNewPassword} className={getActiveStyle}>
-                    Create new password
-                </NavLink>
-            </div>
-        </nav>
+        </div>
     );
-};
+})
+
+
+export default Header;

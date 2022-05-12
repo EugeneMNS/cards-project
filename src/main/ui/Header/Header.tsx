@@ -1,5 +1,5 @@
 import s from './Header.module.css';
-import PackListIcon from './Cards.png'
+//import PackListIcon from './Cards.png'
 //import ProfileIcon from './Profile.png'
 import LogoutIcon from './Logout.png'
 import {NavLink} from 'react-router-dom';
@@ -55,7 +55,7 @@ export const Header = React.memo(() => {
                                         // dispatch(setSortPacksValueAC(null))
                                         // setButtonActive('packs-list')
                                     }}>
-                                <img className={s.btnImg} src={PackListIcon} alt="PacksListIcon"/>
+                                <img className={s.btnImg} src={'PackListIcon'} alt="PacksListIcon"/>
                                 <span>Packs List</span>
                             </button>
                         </NavLink>

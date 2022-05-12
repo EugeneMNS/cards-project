@@ -7,6 +7,7 @@ import { ResetPassword } from "../ResetPassword/ResetPassword";
 import { CreateNewPassword } from "../CreateNewPassword/CreateNewPassword";
 import { SuperComponents } from "../SuperConponents/SuperComponents"
 import  Login  from "../Login/Login";
+import {PacksList} from "../PacksList/PacksList";
 
 export const SIGN_IN_PATH = '/login';
 export const REGISTER_PATH = '/register';
@@ -25,6 +26,7 @@ export const RoutesConst = () => {
                 <Route path={REGISTER_PATH} element={<Registration />} />
                 <Route path={PROFILE_PATH} element={<ProfilePage />} />
                 <Route path={RECOVERY_PATH} element={<ResetPassword />} />
+                <Route path={PACKS_LIST_PATH} element={<PacksList/>}/>
                 <Route
                     path={CREATE_NEW_PASSWORD_PATH}
                     element={<CreateNewPassword />}

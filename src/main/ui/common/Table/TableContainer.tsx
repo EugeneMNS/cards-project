@@ -7,7 +7,7 @@ import {RootStateType} from "../../../bll/store";
 //import {AddPack} from '../../Modals/AddPack';
 import {CardPacksType} from '../../../dal/packsAPI';
 import {Table} from './Table';
-import {SearchPacks} from "../Search/SearchPaks";
+import {SearchPacks} from "../Search/SearchPacks";
 
 
 export const TableContainer = React.memo(() => {

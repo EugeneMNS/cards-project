@@ -11,12 +11,12 @@ import {
 import {RootStateType} from '../../../bll/store';
 //import {DeleteCard} from '../../Modals/DeleteCard';
 //import {AddUpdateCard} from '../../Modals/AddUpdateCard';
-//import {PaginationCardsContainer} from '../Pagination/PaginationCardsContainer';
+import {PaginationCardsContainer} from '../Pagination/PaginationCardsContainer';
 import {CardResponseType} from '../../../dal/cardsAPI';
 import {Navigate, useParams} from 'react-router-dom';
-//import SearchPaks from '../Search/SearchPaks';
+import {SearchPacks} from '../Search/SearchPacks';
 import {ArrowBack, CardsTable} from './CardsTable';
-//import {ErrorSnackbar} from '../Error/ErrorSnackbar';
+import {ErrorSnackbar} from '../Error/ErrorSnackbar';
 import {RequestStatusType} from '../../../bll/appReducer';
 import {Title} from '../Title/Title';
 import {setCardsPacksCountFromRangeAC} from '../../../bll/packsReducer';
@@ -96,7 +96,7 @@ export const CardsPage = React.memo(() => {
 
 
                     <div className={s.Table__top}>
-                       {/* <SearchCardsContainer/>*/}
+                        <SearchPacks/>
                         {userId === cards.packUserId &&
                             <button className={styles.add} onClick={() => setAddMode(true)}> Add Card</button>
                         }
@@ -142,9 +142,9 @@ export const CardsPage = React.memo(() => {
 
                         </>}
                 </div>
-                {/*<PaginationCardsContainer/>*/}
+                <PaginationCardsContainer/>
             </div>
-            {/*<ErrorSnackbar/>*/}
+            <ErrorSnackbar/>
         </div>
     );
 });

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 
 export const instance = axios.create({
     // baseURL: process.env.REACT_APP_BACK_URL || 'http://localhost:7542/2.0/',
@@ -9,7 +9,8 @@ export const instance = axios.create({
 // константы для отправки письма на почту для восстановления пароля
 const from = "test-front-admin <ai73a@yandex.by>";
 const message = `<div style=\"background-color: lime; padding: 15px\">password recovery link:
-                <a href='http://localhost:3000/cards-project#/resetPassword/$token$'>link</a></div>`;
+                <a href='http://localhost:3000/cards-project#/createNewPassword/$token$'>link</a>
+                </div>`;
 
 export const authAPI = {
     register(email: string | null, password: string | null) {
@@ -18,7 +19,13 @@ export const authAPI = {
     resetPassword(email: string) {
         return instance.post(`/auth/forgot`, {email, from, message})
     },
-    createNewPassword(password: string | null, resetPasswordToken: string) {
-        return instance.post(`/auth/set-new-password`, {password, resetPasswordToken})
+    createNewPassword(data: NewPasswordType) {
+        return instance.post<NewPasswordType, AxiosResponse<NewPasswordType>>(`/auth/set-new-password`, data)
     }
+}
+
+// types
+export type NewPasswordType = {
+    password: string
+    resetPasswordToken: string
 }

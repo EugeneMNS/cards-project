@@ -14,7 +14,7 @@ import {RECOVERY_PATH} from '../Routes/Routes'
 const Login = React.memo(() => {
     const [email, setEmail] = useState('cards@test.com');
     const [password, setPassword] = useState('Qwertyuiop123');
-    const [rememberMe, setRememberMe] = useState(false);
+    const [rememberMe, setRememberMe] = useState(true);
 
     const isInitialized = useSelector<RootStateType, boolean>((state) => state.app.isInitialized);
     const error = useSelector<RootStateType, string>((state) => state.login.error);

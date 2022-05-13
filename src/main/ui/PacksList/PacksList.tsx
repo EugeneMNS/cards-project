@@ -7,12 +7,12 @@ import {RootStateType} from '../../bll/store';
 import {Navigate} from 'react-router-dom';
 import {SortingPacksType} from '../../dal/packsAPI';
 //import {Sorting} from '../common/Sorting/Sorting';
-//import {PaginationPacksContainer} from '../common/Pagination/PaginationPacksContainer';
+import {PaginationPacksContainer} from '../common/Pagination/PaginationPacksContainer';
 import {changeLayoutAC} from '../../bll/cardsReducer';
 import {Title} from '../common/Title/Title';
 import {TableContainer} from '../common/Table/TableContainer';
-//import {RangeSliderContainer} from '../common/Range/RangeSliderContainer';
-//import {ErrorSnackbar} from '../common/Error/ErrorSnackbar';
+import {RangeSliderContainer} from '../common/RangeSlider/RangeSliderContainer';
+import {ErrorSnackbar} from '../common/Error/ErrorSnackbar';
 
 
 export const PacksList = () => {
@@ -56,16 +56,16 @@ export const PacksList = () => {
                 <div className={s.profile__ChooseOwner}>
                     <ChooseOwner/>
                 </div>
-               {/* <RangeSliderContainer/>
-                <Sorting/>*/}
+                <RangeSliderContainer/>
+                {/*<Sorting/>*/}
             </div>
 
             <div className={s.profile__main}>
                 <Title value={'Packs list'}/>
                 <TableContainer/>
-               {/* <PaginationPacksContainer/>*/}
+                <PaginationPacksContainer/>
             </div>
-            {/*<ErrorSnackbar/>*/}
+            <ErrorSnackbar/>
         </div>
 
     )

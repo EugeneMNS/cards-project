@@ -7,13 +7,13 @@ import {REGISTER_PATH} from "../Routes/Routes"
 import s from './LogIn.module.scss';
 import style from '../InitCommonStyle.module.css';
 import {Alert} from '@mui/material';
-//import {ErrorSnackbar} from '../../common/Error/ErrorSnackbar';
+import {ErrorSnackbar} from '../common/Error/ErrorSnackbar';
 import {signIn} from '../../bll/loginReducer';
 import {RECOVERY_PATH} from '../Routes/Routes'
 
 const Login = React.memo(() => {
-    const [email, setEmail] = useState('test1test@test.com');
-    const [password, setPassword] = useState('freetest');
+    const [email, setEmail] = useState('cards@test.com');
+    const [password, setPassword] = useState('Qwertyuiop123');
     const [rememberMe, setRememberMe] = useState(false);
 
     const isInitialized = useSelector<RootStateType, boolean>((state) => state.app.isInitialized);
@@ -90,7 +90,7 @@ const Login = React.memo(() => {
                     Sign Up
                 </NavLink>
             </div>
-            {/*<ErrorSnackbar/>*/}
+            <ErrorSnackbar/>
         </div>
     );
 });

@@ -6,13 +6,14 @@ import SchoolIcon from '@mui/icons-material/School';
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {RootStateType} from "../../bll/store";
 import {createNewPasswordTC} from "../../bll/createNewPasswordReducer";
-import {useParams} from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
 
 export const CreateNewPassword = () => {
 
-    const token = useParams();
+    const {token} = useParams()
 
     const dispatch = useDispatch();
+    const isNewPasswordSet = useSelector<RootStateType, boolean>(state => state.createNewPassword.isNewPasswordSet);
     const error = useSelector<RootStateType, string | null>(state => state.createNewPassword.error);
 
     const [password, setPassword] = useState("")
@@ -43,9 +44,13 @@ export const CreateNewPassword = () => {
     const onClickRegisterHandler = () => {
         if (token) {
             // @ts-ignore
-            dispatch(createNewPasswordTC(password, token))
+            dispatch(createNewPasswordTC({password: password, resetPasswordToken: token}))
             console.log({password, token})
         }
+    }
+
+    if (isNewPasswordSet) {
+        return <Navigate to={"/login"}/>
     }
 
     return <>

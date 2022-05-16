@@ -175,7 +175,7 @@ export const getPacksTC = (payload?: PacksType):ThunkAction<void, RootStateType,
 
     }
 
-export const createPack = (name: string, user_id?: string): ThunkAction<void, RootStateType, unknown, AnyAction> => (dispatch) => {
+export const createPack = (name?: string, user_id?: string ): ThunkAction<void, RootStateType, unknown, AnyAction> => (dispatch) => {
     dispatch(setAppLoading("loading"))
     packsApi.createPack({name})
         .then((res) => {
@@ -215,9 +215,9 @@ export const createPack = (name: string, user_id?: string): ThunkAction<void, Ro
 }
 
 
-export const deletePack = (packID: string, user_id?: string): ThunkAction<void, RootStateType, unknown, AnyAction> => (dispatch) => {
+export const deletePack = (packID: string, user_id?: string): ThunkAction<void, RootStateType, unknown, AnyAction> => async (dispatch) => {
     dispatch(setAppLoading("loading"))
-    packsApi.deletePack(packID)
+    await packsApi.deletePack(packID)
         .then((res) => {
             dispatch(getPacksTC({user_id}))
         })

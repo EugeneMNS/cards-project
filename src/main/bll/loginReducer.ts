@@ -50,6 +50,7 @@ export type LoginActions =
 
 
 export const signIn = (payload: LoginDataType) => (dispatch: Dispatch) => {
+
     dispatch(setAppLoading("loading"))
     authApi
         .login(payload)

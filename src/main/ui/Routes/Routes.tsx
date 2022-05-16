@@ -28,10 +28,9 @@ export const RoutesConst = () => {
                 <Route path={PROFILE_PATH} element={<ProfilePage />} />
                 <Route path={RECOVERY_PATH} element={<ResetPassword />} />
                 <Route path={PACKS_LIST_PATH} element={<PacksList/>}/>
-                <Route
-                    path={CREATE_NEW_PASSWORD_PATH}
-                    element={<CreateNewPassword />}
-                />
+
+                <Route path={CREATE_NEW_PASSWORD_PATH + "/:token"} element={<CreateNewPassword />}/>
+
                 <Route path={'404'} element={<Error404 />} />
                 <Route path="*" element={<Navigate to='/404'/>} />
                {/* <Route path={'/learn/:packId/:packName'} element={<Learning/>}/>*/}

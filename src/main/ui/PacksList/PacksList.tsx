@@ -26,7 +26,6 @@ export const PacksList = () => {
     const pageCount = useSelector<RootStateType, number>(state => state.packs.pageCount)
     const cardsValuesFromRange = useSelector<RootStateType, Array<number>>((state) => state.packs.cardsValuesFromRange);
 
-
     useEffect(() => {
         if (isInitialized) {
             dispatch(getPacksTC() as any)

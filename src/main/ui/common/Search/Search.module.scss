@@ -15,6 +15,7 @@
   opacity: 0.5;
   border: 1px solid #092A61;
   border-radius: 2px;
+  font-family: "SFUIDisplayRegular";
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -28,7 +29,7 @@
   outline-offset: 0;
 }
 .searchInput::before{
-  content: url("https://toppng.com/uploads/preview/search-icon-customer-icon-11564158924ifw7wyjtfu.png");
+  content: url("../../image/SearchIcon.png");
   display: block;
   width: 16px;
   height: 16px;

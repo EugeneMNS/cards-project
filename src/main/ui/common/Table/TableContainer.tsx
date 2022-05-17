@@ -7,7 +7,7 @@ import {DeletePack} from '../../Modals/DeletePack';
 import {AddPack} from '../../Modals/AddPack';
 import {CardPacksType} from '../../../dal/packsAPI';
 import {Table} from './Table';
-import {SearchPacks} from "../Search/SearchPacks";
+import SearchPacksContainer from "../Search/SearchPacksContainer";
 
 
 export const TableContainer = React.memo(() => {
@@ -38,7 +38,7 @@ export const TableContainer = React.memo(() => {
 
     return (<div className={s.table_container}>
             <div className={s.Table__top}>
-                <SearchPacks/>
+                <SearchPacksContainer/>
                 <button className={s.add}
                         onClick={() => setAddMode(true)}> Add new pack</button>
             </div>

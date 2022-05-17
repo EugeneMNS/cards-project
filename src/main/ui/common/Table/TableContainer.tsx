@@ -9,6 +9,7 @@ import {CardPacksType} from '../../../dal/packsAPI';
 import {Table} from './Table';
 import {SearchPacks} from "../Search/SearchPacks";
 import {createPack, deletePack, getPacksTC} from "../../../bll/packsReducer";
+import {AddNewPackModal} from "../../CustomModals/AddNewPackModal/AddNewPackModal";
 
 
 export const TableContainer = React.memo(() => {
@@ -37,8 +38,8 @@ export const TableContainer = React.memo(() => {
         // setDeleteMode(true)
     }, [])
 
-    const eadModeOn = useCallback(() => {
-        dispatch(createPack("пробник",userId) as any)
+    const addPackHandler = useCallback((title:string) => {
+        dispatch(createPack(title,userId) as any)
         // setPack(pack)
         // setEditMode(true)
     }, [])
@@ -46,8 +47,11 @@ export const TableContainer = React.memo(() => {
     return (<div className={s.table_container}>
             <div className={s.Table__top}>
                 <SearchPacks/>
-                <button className={s.add}
-                        onClick={eadModeOn}> Add new pack</button>
+                <div>
+                    <AddNewPackModal addPackHandler={addPackHandler}/>
+                </div>
+                {/*<button className={s.add}*/}
+                {/*        onClick={eadModeOn}> Add new pack</button>*/}
             </div>
             {/*{addMode && <AddPack setAddMode={setAddMode}/>}*/}
             {/*{pack && editMode && <EditPack pack={pack} setEditMode={setEditMode}/>}*/}

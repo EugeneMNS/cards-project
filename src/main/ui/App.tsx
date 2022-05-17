@@ -7,7 +7,8 @@ import { RoutesConst } from "./Routes/Routes";
 import {checkAuthMe} from "../bll/loginReducer";
 import {CircularProgress} from "@mui/material";
 
-export const App = () => {
+export const App = React.memo( () => {
+
     const dispatch = useDispatch();
     const isInitialized = useSelector<RootStateType, boolean>(state => state.app.isInitialized)
     const redirectToLogin = useSelector<RootStateType, boolean>(state => state.login.redirectToLogin)
@@ -38,4 +39,4 @@ export const App = () => {
             <RoutesConst />
       </div>
   );
-};
+});

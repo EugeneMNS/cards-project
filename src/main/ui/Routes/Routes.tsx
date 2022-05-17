@@ -5,7 +5,6 @@ import { Registration } from "../Registration/Registration";
 import { ProfilePage } from "../Profile/ProfilePage";
 import { ResetPassword } from "../ResetPassword/ResetPassword";
 import { CreateNewPassword } from "../CreateNewPassword/CreateNewPassword";
-import { SuperComponents } from "../SuperConponents/SuperComponents"
 import  Login  from "../Login/Login";
 import {PacksList} from "../PacksList/PacksList";
 import {CardsPage} from "../common/Cards/CardsPage";

@@ -9,8 +9,8 @@ import {
     updateCardTC
 } from '../../../bll/cardsReducer';
 import {RootStateType} from '../../../bll/store';
-//import {DeleteCard} from '../../Modals/DeleteCard';
-//import {AddUpdateCard} from '../../Modals/AddUpdateCard';
+import {DeleteCard} from '../../Modals/DeleteCard';
+import {AddUpdateCard} from '../../Modals/AddUpdateCard';
 import {PaginationCardsContainer} from '../Pagination/PaginationCardsContainer';
 import {CardResponseType} from '../../../dal/cardsAPI';
 import {Navigate, useParams} from 'react-router-dom';
@@ -106,19 +106,19 @@ export const CardsPage = React.memo(() => {
                     {status === 'loading'
                         ? <div> </div>
                         : <>
-                            {/*{cards && cardsCurrent && deleteMode &&*/}
-                            {/*    <DeleteCard cards={cardsCurrent} deleteModeOff={deleteModeOff}/>}*/}
+                            {cards && cardsCurrent && deleteMode &&
+                                <DeleteCard cards={cardsCurrent} deleteModeOff={deleteModeOff}/>}
 
 
-                            {/*{addEditMode && cardsCurrent &&*/}
-                            {/*    <AddUpdateCard addUpdateOff={addUpdateOff}*/}
-                            {/*                   updateCard={updateCard}*/}
-                            {/*                   card={cardsCurrent}*/}
-                            {/*    />}*/}
-                            {/*{addMode && <AddUpdateCard*/}
-                            {/*    createCard={createCard}*/}
-                            {/*    addUpdateOff={addUpdateOff}*/}
-                            {/*/>}*/}
+                            {addEditMode && cardsCurrent &&
+                                <AddUpdateCard addUpdateOff={addUpdateOff}
+                                               updateCard={updateCard}
+                                               card={cardsCurrent}
+                                />}
+                            {addMode && <AddUpdateCard
+                                createCard={createCard}
+                                addUpdateOff={addUpdateOff}
+                            />}
 
 
                             {

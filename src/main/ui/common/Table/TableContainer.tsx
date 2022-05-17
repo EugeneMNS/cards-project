@@ -2,9 +2,9 @@ import React, {useCallback, useState} from 'react';
 import s from './Table.module.scss';
 import {useSelector} from 'react-redux';
 import {RootStateType} from "../../../bll/store";
-//import {EditPack} from '../../Modals/EditPack';
-//import {DeletePack} from '../../Modals/DeletePack';
-//import {AddPack} from '../../Modals/AddPack';
+import {EditPack} from '../../Modals/EditPack';
+import {DeletePack} from '../../Modals/DeletePack';
+import {AddPack} from '../../Modals/AddPack';
 import {CardPacksType} from '../../../dal/packsAPI';
 import {Table} from './Table';
 import {SearchPacks} from "../Search/SearchPacks";
@@ -42,9 +42,9 @@ export const TableContainer = React.memo(() => {
                 <button className={s.add}
                         onClick={() => setAddMode(true)}> Add new pack</button>
             </div>
-            {/*{addMode && <AddPack setAddMode={setAddMode}/>}*/}
-            {/*{pack && editMode && <EditPack pack={pack} setEditMode={setEditMode}/>}*/}
-            {/*{pack && deleteMode && <DeletePack pack={pack} setDeleteMode={setDeleteMode}/>}*/}
+            {addMode && <AddPack setAddMode={setAddMode}/>}
+            {pack && editMode && <EditPack pack={pack} setEditMode={setEditMode}/>}
+            {pack && deleteMode && <DeletePack pack={pack} setDeleteMode={setDeleteMode}/>}
 
             {packsList[0]
                 ? <Table packsList={packsList}

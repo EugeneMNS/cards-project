@@ -14,7 +14,6 @@ import {AddUpdateCard} from '../../Modals/AddUpdateCard';
 import {PaginationCardsContainer} from '../Pagination/PaginationCardsContainer';
 import {CardResponseType} from '../../../dal/cardsAPI';
 import {Navigate, useParams} from 'react-router-dom';
-import Search from '../Search/Search';
 import {ArrowBack, CardsTable} from './CardsTable';
 import {ErrorSnackbar} from '../Error/ErrorSnackbar';
 import {RequestStatusType} from '../../../bll/appReducer';
@@ -98,9 +97,6 @@ export const CardsPage = React.memo(() => {
 
                     <div className={s.Table__top}>
                         <SearchCardsContainer/>
-                        {userId === cards.packUserId &&
-                            <button className={styles.add} onClick={() => setAddMode(true)}> Add Card</button>
-                        }
                         {userId === cards.packUserId &&
                             <button className={styles.add} onClick={() => setAddMode(true)}> Add Card</button>
                         }

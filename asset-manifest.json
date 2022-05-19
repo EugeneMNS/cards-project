@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/cards-project/static/css/main.3a7d5c45.css",
-    "main.js": "/cards-project/static/js/main.4d9eb120.js",
+    "main.css": "/cards-project/static/css/main.a82cb6e6.css",
+    "main.js": "/cards-project/static/js/main.19c589a2.js",
     "static/js/787.d2ce132a.chunk.js": "/cards-project/static/js/787.d2ce132a.chunk.js",
+    "static/media/elon-musk-smoke.gif": "/cards-project/static/media/elon-musk-smoke.e7f20b7afc224c06c370.gif",
     "static/media/Logout.png": "/cards-project/static/media/Logout.41a55353a7485a746660.png",
     "index.html": "/cards-project/index.html",
-    "main.3a7d5c45.css.map": "/cards-project/static/css/main.3a7d5c45.css.map",
-    "main.4d9eb120.js.map": "/cards-project/static/js/main.4d9eb120.js.map",
+    "static/media/ArrowBackIcon.svg": "/cards-project/static/media/ArrowBackIcon.a0d94486da3f7cdfc1fb80e99e47351c.svg",
+    "main.a82cb6e6.css.map": "/cards-project/static/css/main.a82cb6e6.css.map",
+    "main.19c589a2.js.map": "/cards-project/static/js/main.19c589a2.js.map",
     "787.d2ce132a.chunk.js.map": "/cards-project/static/js/787.d2ce132a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3a7d5c45.css",
-    "static/js/main.4d9eb120.js"
+    "static/css/main.a82cb6e6.css",
+    "static/js/main.19c589a2.js"
   ]
 }

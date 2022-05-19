@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import React from 'react';
 import s from '../Modals/ModalsCommonStyles.module.css';
 import {NavLink} from 'react-router-dom';
-//import {RateYourself} from './Rate/RateYourself';
+import {RateYourself} from './Rate/RateYourself';
 import {PACKS_LIST_PATH, PROFILE_PATH} from '../Routes/Routes';
 import {setMyCurrentGradeAC, updateGradeTC} from '../../bll/cardsReducer';
 import {RootStateType} from '../../bll/store';

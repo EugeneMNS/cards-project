@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {getCardsTC, setCardsAC} from '../../bll/cardsReducer';
 import {QuestionModal} from '../Learning /QuestionModal';
 import {ErrorSnackbar} from '../common/Error/ErrorSnackbar';
+import {CheckYourself} from './CheckYourself';
 import {RootStateType} from '../../bll/store';
 import {CardResponseType} from '../../dal/cardsAPI';
 import {useParams} from 'react-router-dom';
@@ -83,7 +84,11 @@ export const Learning = React.memo(() => {
                                                     packName={packName}
                                                     checkYourselfModeOn={checkYourselfModeOn}
                                                     questionMode={setQuestionMode}/>}
-
+            {card && checkYourselfMode && <CheckYourself questionMode={setQuestionMode}
+                                                         checkYourselfModeOff={checkYourselfModeOff}
+                                                         card={card}
+                                                         packName={packName}
+            />}
             <ErrorSnackbar/>
         </>
 

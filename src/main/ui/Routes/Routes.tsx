@@ -8,7 +8,7 @@ import { CreateNewPassword } from "../CreateNewPassword/CreateNewPassword";
 import  Login  from "../Login/Login";
 import {PacksList} from "../PacksList/PacksList";
 import {CardsPage} from "../common/Cards/CardsPage";
-import {Learning} from "../Learning /Learning";
+import {Learning} from "../Learning/Learning";
 
 export const SIGN_IN_PATH = '/login';
 export const REGISTER_PATH = '/register';

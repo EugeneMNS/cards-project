@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
 import React, {useEffect, useState} from 'react';
 import {getCardsTC, setCardsAC} from '../../bll/cardsReducer';
-import {QuestionModal} from '../Learning /QuestionModal';
+import {QuestionModal} from './QuestionModal';
 import {ErrorSnackbar} from '../common/Error/ErrorSnackbar';
 import {CheckYourself} from './CheckYourself';
 import {RootStateType} from '../../bll/store';

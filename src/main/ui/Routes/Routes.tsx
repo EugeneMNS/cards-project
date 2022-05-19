@@ -5,10 +5,10 @@ import { Registration } from "../Registration/Registration";
 import { ProfilePage } from "../Profile/ProfilePage";
 import { ResetPassword } from "../ResetPassword/ResetPassword";
 import { CreateNewPassword } from "../CreateNewPassword/CreateNewPassword";
-import { SuperComponents } from "../SuperConponents/SuperComponents"
 import  Login  from "../Login/Login";
 import {PacksList} from "../PacksList/PacksList";
 import {CardsPage} from "../common/Cards/CardsPage";
+import {Learning} from "../Learning/Learning";
 
 export const SIGN_IN_PATH = '/login';
 export const REGISTER_PATH = '/register';
@@ -33,7 +33,7 @@ export const RoutesConst = () => {
 
                 <Route path={'404'} element={<Error404 />} />
                 <Route path="*" element={<Navigate to='/404'/>} />
-               {/* <Route path={'/learn/:packId/:packName'} element={<Learning/>}/>*/}
+               <Route path={'/learn/:packId/:packName'} element={<Learning/>}/>
                 <Route path={'pack/:packId/:packName'} element={<CardsPage/>}/>
             </Routes>
         </div>

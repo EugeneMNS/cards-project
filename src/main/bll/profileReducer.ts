@@ -1,11 +1,18 @@
 
 import {ThunkAction} from 'redux-thunk';
-import { RootStateType} from '../bll/store';
+import {RootStateType} from './store';
 import {AnyAction} from 'redux';
-import {setAppLoading, setErrorAC, setInitializedAC} from '../bll/appReducer';
+import {setAppLoading, setErrorAC, setInitializedAC} from './appReducer';
 import {authApi} from '../dal/authApi';
 import {UserDomainType} from '../dal/api';
-
+import {logOut, redirectToLogin} from './loginReducer';
+import {
+    setCardPacksPageCountAC,
+    setCardsPacksCountFromRangeAC,
+    setSortPacksValueAC,
+    setWithMyIdAC
+} from './packsReducer';
+import {changeLayoutAC, setCardsPageCountAC} from './cardsReducer';
 
 
 //types
@@ -79,8 +86,54 @@ export const changeUserName = (name: string): ThunkAction<void, RootStateType, u
                     tokenDeathTime: 0,
                     __v: 0
                 }));
+                dispatch(setCardPacksPageCountAC(10))
+                dispatch(setCardsPageCountAC(10))
+                dispatch(setCardsPacksCountFromRangeAC([0, 1000]))
+                dispatch(redirectToLogin(true))
 
+                dispatch(setWithMyIdAC(true))
+                dispatch(changeLayoutAC("profile"))
+                dispatch(setSortPacksValueAC(""))
+            }
+        })
+        .finally(() => dispatch(setAppLoading("idle")))
+}
 
+export const changeProfilePhoto = (avatar: string | ArrayBuffer | null ): ThunkAction<void, RootStateType, unknown, AnyAction> => (dispatch) => {
+    dispatch(setAppLoading("loading"))
+
+    authApi.changeProfilePhoto(avatar)
+        .then((res) => {
+            dispatch(setUserProfile(res.data.updatedUser))
+        })
+        .catch((err) => {
+            dispatch(setErrorAC(err.response.data.error))
+            if(err.response.data.error === "you are not authorized /ᐠ-ꞈ-ᐟ\\") {
+                dispatch(setInitializedAC(false))
+                dispatch(setUserProfile({
+                    _id: '',
+                    email: '',
+                    name: '',
+                    avatar: '',
+                    publicCardPacksCount: 0,
+                    created: '',
+                    updated: '',
+                    isAdmin: false,
+                    verified: false,
+                    rememberMe: false,
+                    error: '',
+                    token: '',
+                    tokenDeathTime: 0,
+                    __v: 0
+                }));
+                dispatch(setCardPacksPageCountAC(10))
+                dispatch(setCardsPageCountAC(10))
+                dispatch(setCardsPacksCountFromRangeAC([0, 1000]))
+                dispatch(redirectToLogin(true))
+
+                dispatch(setWithMyIdAC(true))
+                dispatch(changeLayoutAC("profile"))
+                dispatch(setSortPacksValueAC(""))
             }
         })
         .finally(() => dispatch(setAppLoading("idle")))

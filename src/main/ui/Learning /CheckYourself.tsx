@@ -43,7 +43,7 @@ export const CheckYourself = React.memo((props: {
                             <span> {props.card.answer}</span>
                         </div>
                     </div>
-                    {/*<RateYourself/>*/}
+                    <RateYourself/>
                     <div className={s.wrapBtn}>
                         <NavLink to={
                             layout === 'packs-list'

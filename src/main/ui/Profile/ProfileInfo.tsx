@@ -1,5 +1,5 @@
 import s from './Profile.module.css';
-import emptyProfilePhoto from '../image/default-avatar.jpg'
+import emptyProfilePhoto from '../image/elon-musk-smoke.gif'
 import React, {ChangeEvent, KeyboardEvent, useEffect, useRef, useState} from 'react';
 import {TextField} from '@mui/material';
 import {useDispatch} from 'react-redux';

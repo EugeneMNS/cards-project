@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CardsPage.module.css';
 import s from '../Table/Table.module.scss';
-import ArrowBackIcon from '../../image/ArrowBackIcon.svg';
+import ArrowBackIcon from '../../image/img.png';
 import {CardResponseType} from '../../../dal/cardsAPI';
 import {NavLink} from 'react-router-dom';
 import {PACKS_LIST_PATH, PROFILE_PATH} from '../../Routes/Routes';

@@ -63,12 +63,12 @@ export const Table = React.memo((props: PacksTableType) => {
                                             <button className={s.delButtonWrapper}
                                                     onClick={() => props.deleteModeOn(pack)}>Delete
                                             </button>
-                                            <button className={s.buttonWrapper}
+                                            <button className={s.editButton}
                                                     onClick={() => props.editModeOn(pack)}>Edit
                                             </button>
                                             <NavLink to={`/learn/${pack._id}/${pack.name}`}>
                                                 {
-                                                    pack.cardsCount > 0 && <button className={s.buttonWrapper}
+                                                    pack.cardsCount > 0 && <button className={s.learnButton}
                                                     >Learn
                                                     </button>
                                                 }
@@ -77,7 +77,7 @@ export const Table = React.memo((props: PacksTableType) => {
                                         </div>
                                         : pack.cardsCount > 0 &&
                                         <NavLink to={`/learn/${pack._id}/${pack.name}`}>
-                                            <button className={s.buttonWrapper} style={{cursor: 'pointer'}}
+                                            <button className={s.learnButton} style={{cursor: 'pointer'}}
                                             >Learn
                                             </button>
                                         </NavLink>

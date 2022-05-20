@@ -76,17 +76,73 @@ a, a:visited {
     display: flex;
     align-items: center;
     gap: 10px;
-.delButtonWrapper{
-    color: #FFFFFF;
-    background-color: #F1453D;
-    font-family: "SFUIDisplayRegular";
+    .delButtonWrapper{
+        /*color: #FFFFFF;
+        background-color: #F1453D;
+        font-family: "SFUIDisplayRegular";
+        border-radius: 15%;*/
+        background: #F1453D;
+        text-align: center;
+        letter-spacing: 0.01em;
+        color: #ECECF9;
+        text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+        border-radius: 15%;
+        width: 48px;
+        height: 24px;
+        font-family: "SFUIDisplay-Medium";
+        //font-weight: 300;
+        //font-size: 16px;
+        //line-height: 19px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+    }
+    .editButton{
+        /*background-color: #D7D8EF;
+        color:#092a61;
+        font-weight: 600;
+        font-family: "SFUIDisplayRegular";*/
+        background: #D7D8EF;
+        text-align: center;
+        letter-spacing: 0.01em;
+        color: #21268F;
+        text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+        border-radius: 15%;
+        width: 33px;
+        height: 24px;
+        font-family: "SFUIDisplay-Medium";
+        //font-weight: 300;
+        //font-size: 16px;
+        //line-height: 19px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+
+    }
+
 }
-.buttonWrapper{
-    background-color: #D7D8EF;
-    color:#092a61;
-    font-weight: 600;
-    font-family: "SFUIDisplayRegular";
-}
+    .learnButton{
+        /*background-color: #D7D8EF;
+        color:#092a61;
+        font-weight: 600;
+        font-family: "SFUIDisplayRegular";*/
+        background: #D7D8EF;
+        text-align: center;
+        letter-spacing: 0.01em;
+        color: #21268F;
+        text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+        border-radius: 15%;
+        width: 43px;
+        height: 24px;
+        font-family: "SFUIDisplay-Medium";
+        //font-weight: 300;
+        //font-size: 16px;
+        //line-height: 19px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+
+    }
 }
 }
 .inactive__tableRow {
@@ -96,7 +152,7 @@ a, a:visited {
 }
 }
 }
-}
+
 
 .add {
     background: #21268F;

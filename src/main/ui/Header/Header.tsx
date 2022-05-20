@@ -36,7 +36,7 @@ export const Header = React.memo(() => {
 
 
                 <div className={s.title}>
-                    <h1>PLAYING CARDS</h1>
+                    <h2>PLAYING CARDS</h2>
                 </div>
 
 

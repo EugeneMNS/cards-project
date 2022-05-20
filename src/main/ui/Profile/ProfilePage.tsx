@@ -6,7 +6,7 @@ import {getPacksTC} from '../../bll/packsReducer';
 import s from './Profile.module.css';
 import {InitialProfileStateType} from '../../bll/profileReducer';
 import {SortingPacksType} from '../../dal/packsAPI';
-/*import {Sorting} from '../common/Sorting/Sorting';*/
+import {Sorting} from '../common/Sorting/Sorting';
 import {PaginationPacksContainer} from '../common/Pagination/PaginationPacksContainer';
 import {changeLayoutAC} from '../../bll/cardsReducer';
 import {Title} from '../common/Title/Title';
@@ -56,7 +56,7 @@ export const ProfilePage = React.memo(() => {
                     avatar={profile.avatar}
                 />
                 <RangeSliderContainer/>
-                {/*<Sorting/>*/}
+                <Sorting/>
             </div>
 
 

@@ -5,6 +5,7 @@ import { setSortPacksValueAC} from '../../../bll/packsReducer';
 import {RootStateType} from '../../../bll/store';
 import {SortingPacksType} from '../../../dal/packsAPI';
 import s from './Sorting.module.css';
+import style from "../../InitCommonStyle.module.css";
 
 export const Sorting = React.memo(() => {
     const dispatch = useDispatch()
@@ -51,7 +52,7 @@ export const Sorting = React.memo(() => {
                 <div
                     className={s.resetSortingFilter}
                     onClick={() => dispatch(setSortPacksValueAC(""))}
-                >reset sorting filter</div>
+                ><button className={s.resetSortingButton}>Reset sorting</button></div>
             </div>
         </div>
     )

@@ -58,7 +58,7 @@ a {
 }
 
 .active {
-    background-color: rgba(70, 147, 170, 0.19);
+    background-color: #DCCCDB;
     opacity: 0.9;
 }
 

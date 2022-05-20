@@ -32,7 +32,7 @@
     width: 155px;
     padding: 0 10px 0 14px;
     background-color: #FFFFFF;
-    border-radius: 10px;
+    border-radius: 30px;
     color: #232326;
     cursor: pointer;
     font-size: 14px;
@@ -87,5 +87,37 @@
 }
 
 .chosenButtonBackground {
-    background-color: #C2E4E7;
+    background-color: #D9D9F1;
+}
+
+.resetSortingButton {
+    background: #092A61;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #ECECF9;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    width: 225px;
+    max-width: 70%;
+    height: 32px;
+    font-family: "SFUIDisplay-Medium";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 10px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+    /*-webkit-border-radius: 30px;*/
+    /*-moz-border-radius: 30px;*/
+    /*-ms-border-radius: 30px;*/
+    /*-o-border-radius: 30px;*/
+}
+
+.resetSortingButton:disabled{
+    opacity: 0.6;
+}
+
+.resetSortingButton:hover {
+    background: #0c418e;
 }

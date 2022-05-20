@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {RootStateType} from '../../bll/store';
 import {Navigate} from 'react-router-dom';
 import {SortingPacksType} from '../../dal/packsAPI';
-//import {Sorting} from '../common/Sorting/Sorting';
+import {Sorting} from '../common/Sorting/Sorting';
 import {PaginationPacksContainer} from '../common/Pagination/PaginationPacksContainer';
 import {changeLayoutAC} from '../../bll/cardsReducer';
 import {Title} from '../common/Title/Title';
@@ -57,7 +57,7 @@ export const PacksList = () => {
                     <ChooseOwner/>
                 </div>
                 <RangeSliderContainer/>
-                {/*<Sorting/>*/}
+                <Sorting/>
             </div>
 
             <div className={s.profile__main}>

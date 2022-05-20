@@ -42,7 +42,7 @@ export const CardsTable = React.memo((props: CardsPropsType) => {
                                         readonly
                                         emptyColor={'#D7D8EF'}
                                         transition
-                                        fillColor={'#092a61'}
+                                        fillColor={'#21268F'}
                                         size={20}
                                         ratingValue={card.grade * 20}
                                     />

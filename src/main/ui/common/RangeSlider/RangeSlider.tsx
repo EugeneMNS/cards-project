@@ -16,7 +16,7 @@ type RangeSliderType = {
     onChangeCommitted: (values: number[]) => void
 }
 const CustomSlider = styled(Slider)({
-    color: '#092a61',
+    color: '#21268F',
     height: 5,
     '& .MuiSlider-track': {
         border: 'none',
@@ -42,7 +42,7 @@ const CustomSlider = styled(Slider)({
         height: 24,
         borderRadius: 3,
         // backgroundColor: '#21268F',
-        backgroundColor: '#092a61',
+        backgroundColor: '#21268F',
         '&:before': {display: 'none'},
     },
 });

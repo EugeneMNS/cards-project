@@ -1,0 +1,20 @@
+.Error{
+  display: flex;
+ margin-top: 4vh;
+  flex-direction: column;
+  height: 1080px;
+  width: 1920px;
+}
+.AlertTitle{
+  font-size: 40px;
+}
+.TextTitle{
+  font-size: 20px;
+}
+.AlertError{
+  font-size: 20px;
+}
+
+.mask{
+  margin-left: 35%;
+}

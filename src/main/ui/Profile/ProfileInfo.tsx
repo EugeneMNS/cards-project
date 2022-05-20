@@ -102,6 +102,7 @@ export const ProfileInfo = React.memo((props: ProfileInfoPropsType) => {
                         {/*<img src={pencil} height={'13px'}*/}
                         {/*     style={{display: 'inline-block', marginLeft: '10px'}}/>*/}
                 </span>
+
                 }
             </div>
         </div>

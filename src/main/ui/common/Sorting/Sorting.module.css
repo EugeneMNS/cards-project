@@ -91,7 +91,7 @@
 }
 
 .resetSortingButton {
-    background: #092A61;
+    background: #21268F;
     text-align: center;
     letter-spacing: 0.01em;
     color: #ECECF9;
@@ -119,5 +119,5 @@
 }
 
 .resetSortingButton:hover {
-    background: #0c418e;
+    background: #0e138f;
 }

@@ -92,23 +92,26 @@
     opacity: 0.8;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
     cursor: pointer;
+    border: none;
 }
 
 .btnCancel:hover {
-    background: #d3e6e7;
+    background: #868f97;
 }
 
 .mainButton {
     width: 127px;
     height: 36px;
     border-radius: 30px;
-    color: #f9f9fe;
-    background-color: #092a61;
+    color: #ECECF9;
+    background-color: #21268F;
+    box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
     cursor: pointer;
+    border: none;
 }
 
 .mainButton:hover {
-    background: #0c418e;
+    background: #5458ce;
 }
 
 .deleteButton {
@@ -116,11 +119,12 @@
     height: 36px;
     border-radius: 30px;
     color: #f9f9fe;
-    background-color: #f03e36;
+    background-color: #f1453d;
     cursor: pointer;
+    border: none;
 }
 
 .deleteButton:hover {
-    background-color: #e4554e;
+    background-color: #ae312c;
 }
 

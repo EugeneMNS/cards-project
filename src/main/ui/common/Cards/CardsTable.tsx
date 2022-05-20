@@ -57,7 +57,7 @@ export const CardsTable = React.memo((props: CardsPropsType) => {
                                                         props.deleteModeOn(card)
                                                     }}>Delete
                                             </button>
-                                            <button className={s.buttonWrapper} onClick={() => {
+                                            <button className={s.editButton} onClick={() => {
                                                 props.addUpdateOn(card)
                                             }}>Edit
                                             </button>

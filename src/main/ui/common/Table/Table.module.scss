@@ -33,7 +33,7 @@
     text-overflow: ellipsis;
 .table__head{
     text-align: left;
-    color: #092a61;
+    color: #21268F;
     font-family: "SFUIDisplayRegular";
     font-weight: 700;
     font-size: 13px;
@@ -68,7 +68,7 @@ a, a:visited {
 .table__data__active_packName {
     cursor: pointer;
 &:hover {
-     color: #092a61;
+     color: #5458ce;
      font-weight: bold;
  }
 }
@@ -103,7 +103,7 @@ a, a:visited {
     }
     .editButton{
         /*background-color: #D7D8EF;
-        color:#092a61;
+        color:#21268F;
         font-weight: 600;
         font-family: "SFUIDisplayRegular";*/
         background: #D7D8EF;
@@ -129,7 +129,7 @@ a, a:visited {
 }
     .learnButton{
         /*background-color: #D7D8EF;
-        color:#092a61;
+        color:#21268F;
         font-weight: 600;
         font-family: "SFUIDisplayRegular";*/
         background: #D7D8EF;
@@ -185,6 +185,9 @@ a, a:visited {
     -ms-border-radius: 30px;
     -o-border-radius: 30px;
 }
+.add:hover{
+    background-color: #5458ce;
+}
 .noItemText {
     opacity: 0.8;
     margin-top: 10%;
@@ -223,5 +226,5 @@ a, a:visited {
     font-style: normal;
     font-weight: 600;
     font-size: 22px;
-    color: #092a61;
+    color: #21268F;
 }

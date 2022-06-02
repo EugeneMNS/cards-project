@@ -26,7 +26,7 @@
     font-family: 'Cedarville Cursive', cursive;
     font-size: 24px;
     line-height: 39px;
-    color: #092a61;
+    color: #21268F;
     margin: 0px auto 0px auto;
 }
 
@@ -63,7 +63,7 @@ a {
 }
 
 .btn:hover {
-    border-bottom: 3px solid #092a61;
+    border-bottom: 3px solid #21268F;
 
 }
 

@@ -15,7 +15,7 @@
     cursor: pointer;
 }
 .resetSortingFilter:hover {
-    color: #092a61;
+    color: #21268F;
     opacity: 1;
     /*text-decoration: underline dotted;*/
 }
@@ -83,7 +83,7 @@
 }
 
 .dropdownItem:hover {
-    text-shadow: 1px 1px 1px #092a61;
+    text-shadow: 1px 1px 1px #21268F;
 }
 
 .chosenButtonBackground {

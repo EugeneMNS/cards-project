@@ -15,7 +15,7 @@
     font-weight: 600;
     font-size: 26px;
     line-height: 39px;
-    color: #092A61;
+    color: #21268F;
     margin-bottom: 32px;
 }
 .signIn {
@@ -41,12 +41,12 @@
     width: 347px;
     /*height: 48px;*/
     align-items: center;
-    color: #092A61;
+    color: #21268F;
     border: none;
     /*background-color: inherit;*/
     background-color: #F9F9FE;
     margin-bottom: 30px;
-    border-bottom: 1px solid #092A61;
+    border-bottom: 1px solid #21268F;
     /*margin-bottom: 15px;*/
     padding: 5px;
 }
@@ -99,7 +99,7 @@
 }
 
 .btnBlue {
-    background: #092A61;
+    background: #21268F;
     text-align: center;
     letter-spacing: 0.01em;
     color: #ECECF9;
@@ -156,7 +156,7 @@
 
 .linkBlue {
     text-align: center;
-    color: #092A61;
+    color: #21268F;
     font-family: "SFUIDisplay-Semibold";
     font-style: normal;
     font-weight: 600;

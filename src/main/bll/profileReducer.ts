@@ -3,7 +3,7 @@ import {ThunkAction} from 'redux-thunk';
 import {RootStateType} from './store';
 import {AnyAction} from 'redux';
 import {setAppLoading, setErrorAC, setInitializedAC} from './appReducer';
-import {authApi} from '../dal/authApi';
+import {authAPI} from '../dal/authAPI';
 import {UserDomainType} from '../dal/api';
 import {logOut, redirectToLogin} from './loginReducer';
 import {
@@ -62,7 +62,7 @@ export const setUserProfile = (userData: UserDomainType) =>
 
 export const changeUserName = (name: string): ThunkAction<void, RootStateType, unknown, AnyAction> => (dispatch) => {
     dispatch(setAppLoading("loading"))
-    authApi.changeName(name)
+    authAPI.changeName(name)
         .then((res) => {
             dispatch(setUserProfile(res.data.updatedUser))
         })
@@ -102,7 +102,7 @@ export const changeUserName = (name: string): ThunkAction<void, RootStateType, u
 export const changeProfilePhoto = (avatar: string | ArrayBuffer | null ): ThunkAction<void, RootStateType, unknown, AnyAction> => (dispatch) => {
     dispatch(setAppLoading("loading"))
 
-    authApi.changeProfilePhoto(avatar)
+    authAPI.changeProfilePhoto(avatar)
         .then((res) => {
             dispatch(setUserProfile(res.data.updatedUser))
         })

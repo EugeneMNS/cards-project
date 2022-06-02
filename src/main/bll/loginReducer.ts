@@ -1,5 +1,5 @@
 import {setAppLoading, setErrorAC, SetErrorActionType, setInitializedAC} from '../bll/appReducer';
-import {authApi, LoginDataType} from '../dal/authApi';
+import {authAPI, LoginDataType} from '../dal/authAPI';
 import {Dispatch} from 'redux';
 import {
     setCardPacksPageCountAC,
@@ -51,7 +51,7 @@ export type LoginActions =
 
 export const signIn = (payload: LoginDataType) => (dispatch: Dispatch) => {
     dispatch(setAppLoading("loading"))
-    authApi
+    authAPI
         .login(payload)
         .then((res) => {
             // dispatch(loginSuccess());
@@ -74,7 +74,7 @@ export const signIn = (payload: LoginDataType) => (dispatch: Dispatch) => {
 
 export const checkAuthMe = () => (dispatch: Dispatch) => {
     dispatch(setAppLoading("loading"))
-    authApi.me()
+    authAPI.me()
         .then((res) => {
             //dispatch(setAppLoading(false))
             dispatch(setInitializedAC(true));
@@ -92,7 +92,7 @@ export const checkAuthMe = () => (dispatch: Dispatch) => {
 
 export const logOut = () => (dispatch: Dispatch) => {
     dispatch(setAppLoading("loading"))
-    authApi
+    authAPI
         .logOut()
         .then((res) => {
             dispatch(setInitializedAC(false))

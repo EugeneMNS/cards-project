@@ -1,54 +1,41 @@
-import {authAPI} from "../dal/api_Srg";
 import {Dispatch} from "redux";
+import {setAppLoading, setErrorAC, SetErrorActionType} from './appReducer';
+import {registerAPI} from '../dal/registerAPI';
 
-const initialState = {
-    isRegisterIn: false,
-    error: null
+type InitialStateType = typeof initialState
+
+export const initialState = {
+    isRegistration: false,
+    message: '',
 }
 
-// types
-export type SetIsRegisterInActionType = ReturnType<typeof setIsRegisterInAC>;
-export type SetRegisterErrorActionType = ReturnType<typeof setRegisterErrorAC>;
+type actionType = successRegistrationType | SetErrorActionType
 
-type ActionsType =
-    | SetIsRegisterInActionType
-    | SetRegisterErrorActionType
-
-export type InitialStateType = {
-    // true если регистрация прошла успешно
-    isRegisterIn: boolean
-    // если ошибка какая-то глобальная произойдет - мы запишем текст ошибки сюда
-    error: string | null
-}
-
-export const registrationReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+export const registrationReducer = (state: InitialStateType = initialState, action: actionType): InitialStateType => {
     switch (action.type) {
-        case "REGISTER/SET-IS-REGISTER-IN":
-            return {...state, isRegisterIn: action.value}
-        case 'REGISTER/SET-ERROR':
-            return {...state, error: action.error}
-        default:
+        case "REGISTRATION/IS-REGISTRATION-SUCCESS":
+            return {...state, isRegistration: true}
+
+        default: {
             return state;
+        }
     }
 };
 
-// actions
-export const setIsRegisterInAC = (value: boolean) => ({type: 'REGISTER/SET-IS-REGISTER-IN', value} as const)
-export const setRegisterErrorAC = (error: string | null) => ({type: "REGISTER/SET-ERROR", error} as const)
-
-// thunks
-export const registerTC = (email: string | null, password: string | null) => (dispatch: Dispatch<ActionsType>) => {
-    authAPI.register(email, password)
-        .then((res) => {
-            dispatch(setIsRegisterInAC(true))
-            console.log(res.data.addedUser)
-        })
-        .catch((error) => {
-            console.log(error.response.data.error)
-            if (!error.response.data.isEmailValid) {
-                dispatch(setRegisterErrorAC("Error: " + error.response.data.error))
-            } else {
-                dispatch(setRegisterErrorAC("Error: " + error.response.data.passwordRegExp))
-            }
-        })
+export const successRegistrationAC = (isRegistration: boolean) => {
+    return {type: 'REGISTRATION/IS-REGISTRATION-SUCCESS', isRegistration } as const
 }
+
+export const registrationTC = (payload : {email: string, password: string}) => (dispatch: Dispatch) => {
+    dispatch(setAppLoading("loading"))
+    registerAPI.register(payload)
+        .then((res)=>{
+            dispatch(successRegistrationAC(true))
+        })
+        .catch((error)=> {
+            dispatch(setErrorAC(error.response.data.error))
+        })
+        .finally(() => dispatch(setAppLoading("succeeded")))
+}
+
+type successRegistrationType = ReturnType<typeof successRegistrationAC>

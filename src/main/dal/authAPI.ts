@@ -14,7 +14,7 @@ type ChangeNameAvatarPayloadType = {
     avatar?: string // url or base64
 }
 
-export const authApi = {
+export const authAPI = {
     login(payload: LoginDataType) {
         return instance.post<UserDomainType>('auth/login', payload);
     },

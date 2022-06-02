@@ -3,8 +3,7 @@ import thunk from "redux-thunk";
 import { loginReducer} from "./loginReducer";
 import { registrationReducer } from "./registrationReducer";
 import { profileReducer } from "./profileReducer";
-import { resetPasswordReducer } from "./resetPasswordReducer";
-import { createNewPasswordReducer } from "./createNewPasswordReducer";
+import { forgotReducer } from "./forgotReducer";
 import { error404Reducer } from "./error404Reducer";
 import {appReducer} from "./appReducer";
 import {packsReducer} from "./packsReducer";
@@ -14,14 +13,13 @@ import {cardsReducer} from "./cardsReducer";
 
 const rootReducer = combineReducers({
     login: loginReducer,
-    registration: registrationReducer,
+    register: registrationReducer,
+    forgotPassword: forgotReducer,
     profile: profileReducer,
-    resetPassword: resetPasswordReducer,
-    createNewPassword: createNewPasswordReducer,
-    error404: error404Reducer,
-    app: appReducer,
+    // newPassword: newPasswordReducer,
     packs: packsReducer,
     cards: cardsReducer,
+    app: appReducer
 });
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 export type RootStateType = ReturnType<typeof rootReducer>;

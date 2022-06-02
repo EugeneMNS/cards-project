@@ -3,7 +3,7 @@ import "./App.css";
 import {useDispatch, useSelector} from "react-redux";
 import { Header } from "./Header/Header";
 import {RootStateType, store} from "../bll/store";
-import { RoutesConst } from "./Routes/Routes";
+import RoutesConst  from "./Routes/Routes";
 import {checkAuthMe} from "../bll/loginReducer";
 import {CircularProgress} from "@mui/material";
 
